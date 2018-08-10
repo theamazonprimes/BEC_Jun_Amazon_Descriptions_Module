@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/amazon');
 
 const db = mongoose.connection;
@@ -19,7 +20,7 @@ const descriptionSchema = mongoose.Schema({
   color: String,
   size: String,
   weight: Number,
-  text: String,
+  text: String
 });
 
 const Description = mongoose.model('Description', descriptionSchema);
