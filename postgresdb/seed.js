@@ -1,14 +1,6 @@
 const faker = require('faker');
 const fs = require('fs');
-
-// create a csv file with appropriate headers for data
-fs.writeFile(
-  'data.csv',
-  'id, brand, name, reviews, questions, price, color, size, weight, text',
-  err => {
-    if (err) console.log(err);
-  }
-);
+const csvWriter = require('csv-write-stream');
 
 const data = {
   brand: faker.company.companyName(),
@@ -40,5 +32,14 @@ data.star4 = Math.floor(
 );
 data.star5 = data.reviews - data.star1 - data.star2 - data.star3 - data.star4;
 
-// create a csv file (use fs.appendFile())
-// push data object into csv file using recursion
+const writer = csvWriter();
+writer.pipe(fs.createWriteStream('data.csv'));
+// since data is an object, we should be able to use it to use it as the object needed as auto headers
+// if it doesn't work, write it out manually
+// https://www.npmjs.com/package/csv-write-stream
+// https://www.sitepoint.com/basics-node-js-streams/
+// https://stackoverflow.com/questions/40948879/append-to-a-csv-file-in-nodejs-using-csv-write-stream
+// https://nodejs.org/api/stream.html#stream_event_drain
+writer.write(data);
+writer.end('ENDED! DONE!! FINISHED!!!');
+// use while loop with fs.drain to create

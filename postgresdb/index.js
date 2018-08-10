@@ -23,4 +23,5 @@ const Description = db.define('description', {
 
 db.sync().catch(err => console.log(err));
 
+module.exports = Description;
 // bulkCreate

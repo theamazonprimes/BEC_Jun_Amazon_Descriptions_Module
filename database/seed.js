@@ -32,7 +32,7 @@ for (let i = 0; i < 10000; i++) {
   );
   data.star5 = data.reviews - data.star1 - data.star2 - data.star3 - data.star4;
   // console.log(data);
-  new Description(data).save((err, posted) => {
+  new Description(data).save(err => {
     if (err) console.log(err);
   });
 }
