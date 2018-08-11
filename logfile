@@ -1,2 +1,4 @@
-2018-08-09 13:28:07.635 PDT [51034] FATAL:  lock file "postmaster.pid" already exists
-2018-08-09 13:28:07.635 PDT [51034] HINT:  Is another postmaster (PID 49779) running in data directory "/usr/local/var/postgres"?
+postgres: could not access directory "/usr/local/pgsql/data": No such file or directory
+Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
+2018-08-10 16:10:20.022 PDT [62343] FATAL:  lock file "postmaster.pid" already exists
+2018-08-10 16:10:20.022 PDT [62343] HINT:  Is another postmaster (PID 53058) running in data directory "/usr/local/var/postgres"?

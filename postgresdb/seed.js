@@ -3,9 +3,10 @@ const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 
 const amazonWrite = csvWriter();
+amazonWrite.pipe(fs.createWriteStream('data.csv'));
 
 const writeOneMillionTimes = (writer, data, encoding, callback) => {
-  let i = 10;
+  let i = 10000000;
 
   write();
   function write() {
@@ -13,7 +14,6 @@ const writeOneMillionTimes = (writer, data, encoding, callback) => {
 
     do {
       const amazon = {
-        i: i.toString(),
         brand: faker.company.companyName(),
         name: faker.random.words(8),
         reviews: faker.random.number(100000),
@@ -51,9 +51,11 @@ const writeOneMillionTimes = (writer, data, encoding, callback) => {
         amazon.star3 -
         amazon.star4;
       i--;
+      if (i % 50000 === 0) {
+        console.log(i);
+      }
       if (i === 0) {
         // last time!
-        amazonWrite.pipe(fs.createWriteStream('data.csv'));
 
         writer.write(amazon, encoding, callback);
         // writer.write(
