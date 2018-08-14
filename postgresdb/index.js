@@ -1,7 +1,10 @@
 const Sequelize = require('sequelize');
 
 const db = new Sequelize('bec_amazon', 'jkim', 'junkim123', {
-  dialect: 'postgres'
+  dialect: 'postgres',
+  define: {
+    timestamps: false
+  }
 });
 
 const Description = db.define('description', {
@@ -18,7 +21,7 @@ const Description = db.define('description', {
   color: Sequelize.STRING,
   size: Sequelize.STRING,
   weight: Sequelize.INTEGER,
-  text: Sequelize.STRING
+  text: Sequelize.TEXT
 });
 
 db.sync().catch(err => console.log(err));
