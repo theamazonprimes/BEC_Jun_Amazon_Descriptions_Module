@@ -138,14 +138,7 @@ const writeOneMillionTimes = (writer, data, encoding, callback) => {
         console.log(i);
       }
       if (i === 0) {
-        // last time!
-
         writer.write(amazon, encoding, callback);
-        // writer.write(
-        //   `\n${Object.values(amazon).join(',')}`,
-        //   encoding,
-        //   callback
-        // );
       } else {
         // see if we should continue, or wait
         // don't pass the callback, because we're not done yet.
